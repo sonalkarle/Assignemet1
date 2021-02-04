@@ -4,28 +4,32 @@ namespace EmpWage
 {
     class Program
     {
-        static void Main(string[] args)
+
+
+        public const int IS_PART_TIME = 1;   // Constant
+        public const int IS_FULL_TIME = 2;   //Constant
+        public const int EMP_HR_PER_RATE = 20;       //Constant
+        static void Main(String[] args)
         {
-            int IS_PRESENT = 1;   // Constant
-            int EMP_HR_PER_RATE = 20;       //Constant
             int empHr = 0;            //Variable
             int empwage = 0;          //Variable
             Random random = new Random(); // Computation
-            int empCheck = random.Next(0, 2);
-            if (empCheck == IS_PRESENT)
+            int empCheck = random.Next(0, 3);
+            switch (empCheck)
             {
-                Console.WriteLine("Employee is present");
-                empHr = 8;
-
-            }
-            else
-            {
-                Console.WriteLine("Employee is absent");
-                empHr = 0;
+                case IS_PART_TIME:
+                    empHr = 4;
+                    break;
+                case IS_FULL_TIME:
+                    empHr = 8;
+                    break;
+                default:
+                    empHr = 0;
+                    break;
             }
             empwage = (EMP_HR_PER_RATE * empHr);
             Console.WriteLine("Daily employee wage: " + empwage);
-
         }
+
     }
 }
