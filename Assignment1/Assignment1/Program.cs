@@ -9,14 +9,16 @@ namespace EmpWage
         public const int IS_PART_TIME = 1;   // Constant
         public const int IS_FULL_TIME = 2;   //Constant
         public const int EMP_HR_PER_RATE = 20;       //Constant
-        public const int NUM_OF_WORKING_DAYS = 2;
+        public const int NUM_OF_WORKING_DAYS = 2; //Constant
+        public const int MAX_HR_MONTH = 10; //Constant
         static void Main(String[] args)
         {
             int empHr = 0;            //Variable
-            int empwage = 0;          //Variable
-            int totalEmpwage = 0;  //Variable
-            for (int day = 0; day < NUM_OF_WORKING_DAYS; day++)
+            int totalEmpHr = 0;          //Variable
+            int totalworkingDays = 0;  //Variable
+            while (totalEmpHr <= MAX_HR_MONTH && totalworkingDays < NUM_OF_WORKING_DAYS)
             {
+                totalworkingDays++;
                 Random random = new Random(); // Computation
                 int empCheck = random.Next(0, 3);
                 switch (empCheck)
@@ -31,10 +33,11 @@ namespace EmpWage
                         empHr = 0;
                         break;
                 }
-                empwage = (EMP_HR_PER_RATE * empHr);
-                totalEmpwage += empwage;
-                Console.WriteLine("Daily employee wage: " + empwage);
+
+                totalEmpHr += empHr;
+                Console.WriteLine("Day= " + totalworkingDays + "EmpHRS= " + empHr);
             }
+            int totalEmpwage = (EMP_HR_PER_RATE * empHr);
             Console.WriteLine("Total Emp Wage: " + totalEmpwage);
         }
 
